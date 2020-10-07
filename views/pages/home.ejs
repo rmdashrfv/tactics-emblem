@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>Welcome to Tactics Emblem</h1>
+  <div id="login-form">
+    <h3>Log in</h3>
+    <form action="/login">
+      <input type="email" placeholder="Email"><br>
+      <input type="password" placeholder="Password"><br>
+      <input type="submit" value="Log in">
+    </form>
+  </div>
+  <div id="signup-modal">
+    <h3>Create a Tactics Emblem account</h3>
+    <form action="/signup" method="POST">
+      <input type="text" placeholder="Create a username" name="user[username]"><br>
+      <input type="email" placeholder="Email" name="user[email]"><br>
+      <input type="password" placeholder="Create a password" name="user[password]"><br>
+      <input type="submit" value="Create account">
+    </form>
+  </div>
+</body>
+</html>
