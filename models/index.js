@@ -3,7 +3,7 @@ const {
   DataTypes: {
     STRING,
     INTEGER,
-    DATE,
+    DATEONLY,
     ENUM,
     JSONB,
     ARRAY,
@@ -26,7 +26,7 @@ const User = sequelize.define('User', {
     allowNull: false
   },
   birthday: {
-    type: DATE
+    type: DATEONLY
   },
   bio: {
     type: STRING
@@ -150,7 +150,7 @@ const Ability = sequelize.define('Abilities', {
     default: false
   },
   unitIds: {
-    type: ARRAY,
+    type: ARRAY(INTEGER),
     defaultValue: []
   }
 })
@@ -199,7 +199,7 @@ const Equipment = sequelize.define('Equipment', {
     type: INTEGER
   },
   jobIds: { // Jobs that can equip this item
-    type: ARRAY,
+    type: ARRAY(INTEGER),
     defaultValue: []
   },
   status: { // determines things like auto-haste, auto-revive, auto-reflect, etc)
