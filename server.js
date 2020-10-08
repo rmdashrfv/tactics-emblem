@@ -1,5 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcrypt')
+const sassMiddleware = require('node-sass-middleware')
+const path = require('path')
 const saltRounds = 10
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -7,12 +9,22 @@ const app = express()
 const host = process.env.host || '127.0.0.1'
 const PORT = 8000
 const { User } = require('./models')
+const { Liquid } = require('liquidjs')
+const engine = new Liquid()
 
 app.use(express.json())
+app.engine('liquid', engine.express({cache: process.env.NODE_ENV === 'production'}))
 app.use(bodyParser.urlencoded({extended: true})) // for parsing application/x-www-form-urlencoded
 app.use(morgan('dev'))
 app.set('views', './views')
-app.set('view engine', 'ejs')
+app.set('view engine', 'liquid')
+app.use(sassMiddleware({
+  src: __dirname,
+  dest: path.join(__dirname, 'public'),
+  outputStyle: process.env.NODE_ENV === 'production' ? 'compressed' : 'expanded'
+}))
+
+app.use('/public', express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
   res.render('pages/home', {title: 'Welcome'})
