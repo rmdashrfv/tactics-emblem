@@ -5,17 +5,18 @@ const {
   Job,
   Region,
   Discipline,
-  Ability,
+  Ability
 } = require('../models')
+const sequelize = require('sequelize')
 
 createTables = async () => {
-  await User.sync()
-  await Unit.sync()
-  await Equipment.sync()
-  await Job.sync()
-  await Region.sync()
-  await Discipline.sync()
-  await Ability.sync()
+  await User.sync({force: true})
+  await Unit.sync({force: true})
+  await Equipment.sync({force: true})
+  await Job.sync({force: true})
+  await Region.sync({force: true})
+  await Discipline.sync({force: true})
+  await Ability.sync({force: true})
   console.log('Database tables created')
 }
 

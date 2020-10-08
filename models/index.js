@@ -12,7 +12,7 @@ const {
 } = require('sequelize')
 const sequelize = new Sequelize('postgres://mlaw:cjiaang11@localhost/tacticsemblem')
 
-const User = sequelize.define('User', {
+const User = sequelize.define('Users', {
   username: {
     type: STRING,
     allowNull: false
@@ -33,7 +33,8 @@ const User = sequelize.define('User', {
   },
   rank: {
     type: ENUM,
-    values: ['Beginniner', 'Novice Adventurer', 'Adventurer', 'Warrior']
+    values: ['Beginniner', 'Novice Adventurer', 'Adventurer', 'Warrior'],
+    defaultValue: 0
   },
   zodiac: {
     type: ENUM,
@@ -49,7 +50,7 @@ const User = sequelize.define('User', {
   }
 })
 
-const Unit = sequelize.define('Unit', {
+const Unit = sequelize.define('Units', {
   name: {
     type: STRING,
     allowNull: false
