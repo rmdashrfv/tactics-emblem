@@ -32,9 +32,16 @@ const User = sequelize.define('Users', {
     type: STRING
   },
   rank: {
-    type: ENUM,
-    values: ['Beginniner', 'Novice Adventurer', 'Adventurer', 'Warrior'],
+    type: INTEGER,
+    defaultValue: 1
+  },
+  globalPower: { // their ranking in terms of battles won and lost, like K/D
+    type: INTEGER,
     defaultValue: 0
+  },
+  gold: { // how much gold the player has
+    type: INTEGER,
+    defaultValue: 3000
   },
   zodiac: {
     type: ENUM,

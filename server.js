@@ -4,7 +4,7 @@ const saltRounds = 10
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const app = express()
-const host = '127.0.0.1'
+const host = process.env.host || '127.0.0.1'
 const PORT = 8000
 const { User } = require('./models')
 
