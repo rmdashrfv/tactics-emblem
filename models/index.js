@@ -35,7 +35,7 @@ const User = sequelize.define('Users', {
     type: INTEGER,
     defaultValue: 1
   },
-  globalPower: { // their ranking in terms of battles won and lost, like K/D
+  globalScore: { // their ranking in terms of battles won and lost, like K/D
     type: INTEGER,
     defaultValue: 0
   },
