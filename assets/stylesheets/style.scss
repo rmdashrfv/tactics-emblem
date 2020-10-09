@@ -1,12 +1,12 @@
 :root {
-  --theme-bg: #15202b;
-  --theme-text-color: #fff;
+  --dark-theme-bg: #15202b;
+  --dark-theme-text-color: #fff;
 }
 
 body {
-  background-color: var(--theme-bg);
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6, p, a {
-  color: var(--theme-text-color);
+  // color: var(--theme-text-color);
 }

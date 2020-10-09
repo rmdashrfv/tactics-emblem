@@ -13,7 +13,7 @@ const { Liquid } = require('liquidjs')
 const engine = new Liquid()
 
 app.use(express.json())
-app.engine('liquid', engine.express({cache: process.env.NODE_ENV === 'production'}))
+app.engine('liquid', engine.express({root: ['.', 'layouts']}))
 app.use(bodyParser.urlencoded({extended: true})) // for parsing application/x-www-form-urlencoded
 app.use(morgan('dev'))
 app.set('views', './views')

@@ -1,0 +1,1 @@
+console.log('Tactics Emblem Online')
