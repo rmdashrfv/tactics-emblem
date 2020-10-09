@@ -223,6 +223,36 @@ const Region = sequelize.define('Regions', {
   }
 })
 
+const Battle = sequelize.define('Battles', {
+  battleId: {
+    type: STRING,
+    allowNull: false
+  },
+  participantIds: {
+    type: ARRAY(INTEGER),
+    defaultValue: []
+  },
+  timeLength: { // in milliseconds
+    type: INTEGER,
+    allowNull: false
+  },
+  ledger: { // list of actions that took place in a battle and the timestamp at when they happened. Ex: unitName-action-timestamp
+    type: ARRAY(STRING),
+    defaultValue: []
+  },
+  metadata: { // who won, who killed who, turns taken
+    type: JSONB,
+    defaultValue: {}
+  }
+}, {
+  instanceMethods: {
+    findParticipant: async function(username) {
+      return await User.findOne({where: {username: username}})
+    }
+  },
+  indexes: [{unique: true, fields: ['battleId']}]
+})
+
 module.exports = {
   User: User,
   Unit: Unit,
@@ -230,7 +260,8 @@ module.exports = {
   Ability: Ability,
   Job: Job,
   Equipment: Equipment,
-  Region: Region
+  Region: Region,
+  Battle: Battle
 }
 
 // TODO: Get Items from FFT Wiki
