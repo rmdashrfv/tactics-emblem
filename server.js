@@ -19,12 +19,14 @@ app.use(morgan('dev'))
 app.set('views', './views')
 app.set('view engine', 'liquid')
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'assets/stylesheets'),
+  src: './assets/stylesheets',
   dest: path.join(__dirname, 'public'),
+  debug: true,
+  force: true,
   outputStyle: 'expanded'
 }))
 
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/', (req, res) => {
   res.render('pages/home', {title: 'Welcome'})
