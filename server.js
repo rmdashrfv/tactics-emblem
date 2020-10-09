@@ -10,10 +10,13 @@ const host = process.env.host || '127.0.0.1'
 const PORT = 8000
 const { User } = require('./models')
 const { Liquid } = require('liquidjs')
-const engine = new Liquid()
+const engine = new Liquid({
+  root: ['.', './views/layouts'],
+  extname: '.liquid'
+})
 
 app.use(express.json())
-app.engine('liquid', engine.express({root: ['.', 'layouts']}))
+app.engine('liquid', engine.express())
 app.use(bodyParser.urlencoded({extended: true})) // for parsing application/x-www-form-urlencoded
 app.use(morgan('dev'))
 app.set('views', './views')
