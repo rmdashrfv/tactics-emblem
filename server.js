@@ -19,9 +19,9 @@ app.use(morgan('dev'))
 app.set('views', './views')
 app.set('view engine', 'liquid')
 app.use(sassMiddleware({
-  src: __dirname,
+  src: path.join(__dirname, 'assets/stylesheets'),
   dest: path.join(__dirname, 'public'),
-  outputStyle: process.env.NODE_ENV === 'production' ? 'compressed' : 'expanded'
+  outputStyle: 'expanded'
 }))
 
 app.use('/public', express.static(path.join(__dirname, 'public')))
